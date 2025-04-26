@@ -4,9 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun run build --watch",
-    "build": "bun run build:domino && bun run build:example",
-    "build:domino": "bun build src/index.ts --outfile dist/index.js --minify",
-    "build:example": "bun build ./example/app.ts --outfile dist/bundle.js --target browser --minify"
+    "build": "bun run build:domino",
+    "build:domino": "bun build src/index.ts --outfile dist/index.js --minify"
   },
   "devDependencies": {
     "@types/bun": "latest"
