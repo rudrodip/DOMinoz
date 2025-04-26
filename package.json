@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "bun run build --watch",
-    "build": "bun run build:dominoz",
+    "build": "bun run build:dominoz && bun run build:types",
     "build:dominoz": "bun build src/index.ts --outfile dist/dominoz.js --minify --target=browser",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "publish": "bun run build && npm publish --access public"
   },
   "devDependencies": {
@@ -17,7 +18,11 @@
   "bin": {
     "dominoz": "./dist/dominoz.js"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rudrodip/DOMinoz.git"
