@@ -1,0 +1,17 @@
+{
+  "name": "domino",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot index.html",
+    "build": "bun run build:domino && bun run build:example",
+    "build:domino": "bun build src/index.ts --outfile dist/index.js",
+    "build:example": "bun build ./example/app.ts --outfile dist/bundle.js --target browser"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
