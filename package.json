@@ -1,16 +1,31 @@
 {
-  "name": "domino",
-  "module": "index.ts",
+  "name": "dominoz",
+  "module": "src/index.ts",
   "type": "module",
   "scripts": {
     "dev": "bun run build --watch",
-    "build": "bun run build:domino",
-    "build:domino": "bun build src/index.ts --outfile dist/index.js --minify"
+    "build": "bun run build:dominoz",
+    "build:dominoz": "bun build src/index.ts --outfile dist/dominoz.js --minify --target=browser",
+    "publish": "bun run build && npm publish --access public"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "bin": {
+    "dominoz": "./dist/dominoz.js"
+  },
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rudrodip/DOMinoz.git"
+  },
+  "author": "rudrodip",
+  "keywords": [
+    "dominoz",
+    "dominoz.js",
+    "dominoz"
+  ]
 }

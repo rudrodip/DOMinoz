@@ -1,10 +1,10 @@
-# DOMino
+# DOMinoz
 
-DOMino is a minimal DOM reconciliation engine that brings the familiar Component/Element model from React to a simpler, synchronous "domino cascade" architecture. DOMino provides a predictable, explicit update mechanism with no hidden schedulers or batching systems.
+DOMinoz is a minimal DOM reconciliation engine that brings the familiar Component/Element model from React to a simpler, synchronous "dominoz cascade" architecture. DOMinoz provides a predictable, explicit update mechanism with no hidden schedulers or batching systems.
 
 ## Core Architecture
 
-DOMino consists of three primary subsystems working together:
+DOMinoz consists of three primary subsystems working together:
 
 1. **VDOM Model** - Defines the virtual DOM structure
 2. **Cascade System** - Handles diffing and reconciliation
@@ -14,7 +14,7 @@ Each of these subsystems works in a straight-forward, synchronous manner to prod
 
 ## VDOM Model
 
-The virtual DOM in DOMino is built around simple JavaScript objects that represent DOM nodes and component instances.
+The virtual DOM in DOMinoz is built around simple JavaScript objects that represent DOM nodes and component instances.
 
 ### VNode Interface
 
@@ -48,7 +48,7 @@ This accepts similar arguments to React's createElement, flattening nested array
 
 ## Tile Architecture
 
-The core internal representation in DOMino is the **Tile**, which tracks the rendering context of a component:
+The core internal representation in DOMinoz is the **Tile**, which tracks the rendering context of a component:
 
 ```typescript
 interface Tile {
@@ -76,7 +76,7 @@ Unlike React's Fiber system, Tiles don't include work prioritization or scheduli
 
 ## Cascade System
 
-The "Cascade" is DOMino's synchronous reconciliation process. When a state change occurs, it triggers a cascade of updates through the component tree.
+The "Cascade" is DOMinoz's synchronous reconciliation process. When a state change occurs, it triggers a cascade of updates through the component tree.
 
 ### Rendering Process
 
@@ -94,7 +94,7 @@ The "Cascade" is DOMino's synchronous reconciliation process. When a state chang
 
 ### Patch Operations
 
-DOMino uses three types of patch operations:
+DOMinoz uses three types of patch operations:
 
 ```typescript
 type PatchOperation = {
@@ -113,7 +113,7 @@ These operations are collected during the diffing phase and then applied to the 
 
 ### Reconciliation Algorithm
 
-DOMino's reconciliation algorithm:
+DOMinoz's reconciliation algorithm:
 
 1. Compares node types - if different, replace entirely
 2. For string types (HTML elements):
@@ -125,7 +125,7 @@ DOMino's reconciliation algorithm:
 
 ### Keyed Children
 
-DOMino supports keyed children for efficient updates:
+DOMinoz supports keyed children for efficient updates:
 
 1. Creates a map of old children with keys
 2. For each new child:
@@ -136,7 +136,7 @@ DOMino supports keyed children for efficient updates:
 
 ## Hook System
 
-DOMino provides a hook system similar to React hooks, but with a synchronous execution model:
+DOMinoz provides a hook system similar to React hooks, but with a synchronous execution model:
 
 ### Hook Interface
 
@@ -212,7 +212,7 @@ interface AnchorHook extends Hook {
 
 ## Rendering Pipeline
 
-The complete rendering pipeline in DOMino:
+The complete rendering pipeline in DOMinoz:
 
 1. **Initial Render**:
    - `render(vnode, container)` is called
@@ -234,7 +234,7 @@ The complete rendering pipeline in DOMino:
 
 ### DOM Updates
 
-DOMino handles DOM updates efficiently by:
+DOMinoz handles DOM updates efficiently by:
 
 1. Only updating changed attributes and properties
 2. Special handling for event listeners with proper cleanup
@@ -306,7 +306,7 @@ function Counter() {
 
 ## Differences from React
 
-DOMino differs from React in several key ways:
+DOMinoz differs from React in several key ways:
 
 1. **Synchronous Updates**: No batching or scheduling - updates cascade immediately
 2. **No Fiber Architecture**: No work prioritization or concurrent mode
@@ -314,11 +314,11 @@ DOMino differs from React in several key ways:
 4. **No JSX Processing**: Uses createElement directly (though JSX could be supported)
 5. **No Diffing Optimizations**: Simpler reconciliation without heuristics
 6. **Direct DOM Manipulation**: Updates DOM synchronously in the same tick
-7. **Simpler Mental Model**: "Domino cascade" architecture is more predictable
+7. **Simpler Mental Model**: "Dominoz cascade" architecture is more predictable
 
 ## Performance Considerations
 
-DOMino's architecture prioritizes simplicity and predictability over optimized performance:
+DOMinoz's architecture prioritizes simplicity and predictability over optimized performance:
 
 1. **Immediate Execution**: Updates happen synchronously, which may block the main thread for large trees
 2. **No Batching**: Each state update triggers a complete render cycle
@@ -380,17 +380,17 @@ type PatchOperation = {
 
 ---
 
-DOMino is designed to be a lightweight, educational implementation of a React-like library that prioritizes simplicity and predictability. Its explicit update model makes it easier to reason about than more complex frameworks, while still providing the familiar Component/Element model that developers enjoy.
+DOMinoz is designed to be a lightweight, educational implementation of a React-like library that prioritizes simplicity and predictability. Its explicit update model makes it easier to reason about than more complex frameworks, while still providing the familiar Component/Element model that developers enjoy.
 
 ---
 
 ## Philosophy & Goals
 
-DOMino is built around four key principles:
+DOMinoz is built around three key principles:
 
 1. **Explicit, predictable updates**: No hidden schedulers or asynchronous batching. Each state change immediately triggers a "cascade" of diffs and patches.
 2. **Familiar surface**: Keep `Component` and `Element` nomenclature from React. Introduce minimal new terms for the engine internals.
-3. **Domino cascade**: Every component update is like knocking over a domino—the change propagates in a controlled chain, ensuring only affected DOM nodes are updated.
+3. **Dominoz cascade**: Every component update is like knocking over a domino—the change propagates in a controlled chain, ensuring only affected DOM nodes are updated.
 
 ---
 
@@ -405,11 +405,11 @@ Create an HTML file:
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DOMino App</title>
+  <title>DOMinoz App</title>
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="dist/bundle.js"></script>
+  <script type="module" src="dist/dominoz.js"></script>
 </body>
 </html>
 ```
@@ -417,7 +417,7 @@ Create an HTML file:
 Write your app in `src/app.ts`:
 
 ```ts
-import { createElement, render, useSignal, useAfter } from 'domino';
+import { createElement, render, useSignal, useAfter } from 'dominoz';
 
 function App() {
   const [count, setCount] = useSignal(0);
@@ -461,7 +461,7 @@ Bundle with your favorite tool (use `bun` its pretty cool) and open `index.html`
 ### Tiles & the Cascade
 
 - **Tile**: The minimal internal unit tracking a component's render context (analogous to React's Fiber, but far simpler).
-- **Cascade**: The synchronous diff phase. On state change, DOMino re-renders only the affected component subtree into a new VDOM and **compares** it with the previous VDOM.
+- **Cascade**: The synchronous diff phase. On state change, DOMinoz re-renders only the affected component subtree into a new VDOM and **compares** it with the previous VDOM.
 
 ### Dispatch Phase
 
@@ -599,7 +599,7 @@ function ToggleDemo() {
 
 ## Terminology Mapping
 
-| React Term      | DOMino Term   | Description                                   |
+| React Term      | DOMinoz Term   | Description                                   |
 | --------------- | ------------- | --------------------------------------------- |
 | Fiber           | Tile          | Minimal unit tracking render context         |
 | Reconciler      | Cascade       | Synchronous diff phase                        |
