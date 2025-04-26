@@ -1,11 +1,11 @@
 {
   "name": "dominoz",
-  "module": "src/index.ts",
+  "module": "dist/index.js",
   "type": "module",
   "scripts": {
     "dev": "bun run build --watch",
     "build": "bun run build:dominoz && bun run build:types",
-    "build:dominoz": "bun build src/index.ts --outfile dist/dominoz.js --minify --target=browser",
+    "build:dominoz": "bun build src/index.ts --outfile dist/index.js --minify --target=browser",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "publish": "bun run build && npm publish --access public"
   },
@@ -16,9 +16,9 @@
     "typescript": "^5.0.0"
   },
   "bin": {
-    "dominoz": "./dist/dominoz.js"
+    "dominoz": "./dist/index.js"
   },
-  "version": "0.0.2",
+  "version": "0.0.2-beta.2",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"

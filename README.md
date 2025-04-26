@@ -409,7 +409,7 @@ Create an HTML file:
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="dist/dominoz.js"></script>
+  <script type="module" src="dist/index.js"></script>
 </body>
 </html>
 ```
