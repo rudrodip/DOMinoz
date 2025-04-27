@@ -25,6 +25,10 @@ export function createElement(
   if (key !== undefined) {
     delete newProps.key;
   }
+
+  if (flatChildren.length > 0) {
+    newProps.children = flatChildren;
+  }
   
   return {
     type,
