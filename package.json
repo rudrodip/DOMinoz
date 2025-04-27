@@ -18,7 +18,7 @@
   "bin": {
     "dominoz": "./dist/index.js"
   },
-  "version": "0.0.2-beta.3",
+  "version": "0.0.3",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -27,6 +27,7 @@
     "type": "git",
     "url": "https://github.com/rudrodip/DOMinoz.git"
   },
+  "homepage": "https://dominoz.rdsx.dev",
   "author": "rudrodip",
   "keywords": [
     "dominoz",
